@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Page</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #e9e9e9;
+            padding: 40px;
+        }
+
+        .container {
+            width: 450px;
+            margin: auto;
+            background: #fff;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px #ccc;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 6px;
+            border: 1px solid #aaa;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background: #0056b3;
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        .result-box {
+            margin-top: 20px;
+            padding: 15px;
+            background: #dff0d8;
+            color: #3c763d;
+            border-radius: 6px;
+            text-align: center;
+            font-size: 18px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h2>Fire Weather Prediction</h2>
+
+        <form action="/predictdata" method="POST">
+
+            <label>Temperature</label>
+            <input type="number" step="any" name="Temperature" required>
+
+            <label>Relative Humidity (RH)</label>
+            <input type="number" step="any" name="RH" required>
+
+            <label>Wind Speed (WS)</label>
+            <input type="number" step="any" name="WS" required>
+
+            <label>Rain</label>
+            <input type="number" step="any" name="Rain" required>
+
+            <label>FFMC</label>
+            <input type="number" step="any" name="FFMC" required>
+
+            <label>DMC</label>
+            <input type="number" step="any" name="DMC" required>
+
+            <label>ISI</label>
+            <input type="number" step="any" name="ISI" required>
+
+            <label>Classes</label>
+            <input type="number" step="any" name="Classes" required>
+
+            <label>Region</label>
+            <input type="number" step="any" name="Region" required>
+
+            <button type="submit">Predict</button>
+        </form>
+
+        {% if result is not none %}
+        <div class="result-box">
+            <strong>Predicted Output:</strong> {{ result }}
+        </div>
+        {% endif %}
+    </div>
+
+</body>
+</html>
